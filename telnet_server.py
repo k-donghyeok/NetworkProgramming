@@ -7,8 +7,8 @@ address=('',5000)
 s.bind(address)
 s.listen(5)
 
+client, addr=s.accept()
 while True:
-    client, addr=s.accept()
     print("Connection requested from",addr)
     if client:
         time.sleep(1)
