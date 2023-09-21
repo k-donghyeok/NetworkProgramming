@@ -10,5 +10,7 @@ s.listen(5)
 while True:
     client, addr=s.accept()
     print("Connection requested from",addr)
-    client.send(time.ctime(time.time()).encode())
-    client.close()
+    if client:
+        time.sleep(1)
+        client.send(time.ctime(time.time()).encode())
+
