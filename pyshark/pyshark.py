@@ -1,5 +1,6 @@
 import sys
 from scapy.all import *
 
+print(conf.ifaces)
 while True:
-    sniff(prn = lambda X:X.show())
+    sniff(iface="Software Loopback Interface 1",prn = lambda X:X.show())
