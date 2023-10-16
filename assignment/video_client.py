@@ -27,11 +27,11 @@ text.pack()
 entry=tk.Entry(root,width=40)
 entry.pack()
 
-class VideoThread(threading.Thread):
-    def __init__(self):
-        threading.Thread.__init__(self)
-    def run(self):
-        video_handler(image_client_socket)
+class VideoThread(threading.Thread): #threading.Thread 클래스를 상속받는 VideoThread 클래스 정의
+    def __init__(self): #클래스가 생성될떄 실행되는 생성자
+        threading.Thread.__init__(self) # 부모클래스의 생성자 호출
+    def run(self): #스레드가 시작될떄 실행되는 함수
+        video_handler(image_client_socket) #실행되는 함수
 class TextThread(threading.Thread):
 
     def __init__(self):
@@ -93,7 +93,7 @@ btn_input.pack()
 video_thread = VideoThread()
 text_thread = TextThread()
 
-# 스레드 시작
+
 video_thread.start()
 text_thread.start()
 
