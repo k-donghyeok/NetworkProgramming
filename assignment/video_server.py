@@ -31,16 +31,16 @@ text.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
 
 def accept_connections():
     while True:
-        client_socket, _ = image_server_socket.accept()
+        image_socket, _ = image_server_socket.accept()
         text_socket, _ = text_server_socket.accept()
-        image_client_sockets.append(client_socket)
+        image_client_sockets.append(image_socket)
         text_client_sockets.append(text_socket)
-        image_thread = threading.Thread(target=video_handler, args=(client_socket, text_socket))
+        image_thread = threading.Thread(target=video_handler)
         image_thread.start()
         text_thread = threading.Thread(target=receieve_send_text, args=(text_socket,))
         text_thread.start()
 
-def video_handler(client_socket, text_socket):
+def video_handler():
     video = cv2.VideoCapture(0)
     if not video.isOpened():
         print("웹캠을 열 수 없습니다")
